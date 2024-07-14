@@ -15,6 +15,10 @@ class CommentController < ApplicationController
 
   def update
     @comment = Comment.find_by(id: params[:comment_id])
+    if @comment.user_id.to_s != session[:user_id].to_s
+      head :bad_request
+      return
+    end
     if @comment.nil?
       head :bad_request
     else

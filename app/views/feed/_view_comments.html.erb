@@ -1,5 +1,5 @@
 <div class="comments gap10_column">
-    <% @comments.each do |comment| %>
+  <% @comments.each do |comment| %>
     <div class="comment">
       <% if comment.user_id.to_s== session[:user_id].to_s%>
         <input type="checkbox" id="hd-1" class="hide">
