@@ -3,7 +3,7 @@
   <div class="body gap10 column">
     <div class="user gap10 column">
       <%= image_tag "unknown_user.svg",style:"height: 150px;"%>
-      <p>sokolov.serge@istagram</p>
+      <p><%= @user.username%> </p>
       <p>Подписчики <%=@subscribe_count  %></p>
     </div>
     <div class="posts gap10">

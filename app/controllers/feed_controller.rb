@@ -9,6 +9,15 @@ class FeedController < ApplicationController
     end
   end
 
+  def next_post
+    if Post.count == params[:post_id].to_i + 1
+      redirect_to feed_path(post_id: params[:post_id].to_i + 1)
+    else
+      @post = Post.first
+      redirect_to feed_path(post_id: @post.id)
+    end
+  end
+
   def feed
     @post = Post.find_by(id: params[:post_id])
     if @post.nil?
@@ -18,6 +27,8 @@ class FeedController < ApplicationController
       @comments = @post.comment
       @comment_count = @comments.count
       @favorite_count = @post.favorite.count
+      @another_user = @post.user
+
       if @favorite_count >= 100_000_000
         @favorite_count = '>100M'
       elsif @favorite_count >= 1_000_000

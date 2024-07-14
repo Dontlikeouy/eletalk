@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <%= button_to profile_path(), method: :get, class: 'button_null'  do %>
     <div class="user gap10">
-      <p>sokolov.serge@istagram</p>
+      <p><%= session[:username]%></p>
       <%= image_tag "unknown_user.svg"%>
     </div>
   <%end%>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # -----ROOT-----
   root to: 'feed#index'
   get '/feed/:post_id', to: 'feed#feed', as: 'feed'
+  get '/feed/:post_id/next', to: 'feed#next_post', as: 'next_post'
 
   # ----PROFILE-----
   get '/profile', to: 'profile#profile', as: 'profile'
@@ -30,6 +31,9 @@ Rails.application.routes.draw do
 
   # ----USERS-----
   get '/login', to: 'users#index', as: 'login'
-  post '/login/create', to: 'users#login', as: 'login_create'
+  post '/login/create', to: 'users#create', as: 'login_create'
+  get '/login/edit', to: 'users#edit', as: 'username_edit'
+  post '/login/update', to: 'users#update', as: 'username_update'
+
   delete '/login/logout', to: 'users#logout', as: 'logout'
 end

@@ -8,7 +8,7 @@ class CreateDataBase < ActiveRecord::Migration[7.1]
     t.index ['blob_id'], name: 'index_active_storage_attachments_on_blob_id'
     t.index %w[record_type record_id name blob_id], name: 'index_active_storage_attachments_uniqueness', unique: true
   end
-
+  
   create_table 'active_storage_blobs', force: :cascade do |t|
     t.string 'key', null: false
     t.string 'filename', null: false
@@ -58,7 +58,8 @@ class CreateDataBase < ActiveRecord::Migration[7.1]
   end
 
   create_table 'users', force: :cascade do |t|
-    t.string 'email', null: false
+    t.string 'email', null: false, index: { unique: true }
+    t.string 'username', null: false, index: { unique: true }
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end

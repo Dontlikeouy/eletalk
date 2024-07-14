@@ -6,7 +6,7 @@
     </div>
     <div class="body gap10 space_between">
       <div class="image">
-        <%= image_tag @post.image, style:"max-height: 600px;min-height: 400px;"%>
+        <%= image_tag @post.image, style:"max-height: 500px;min-height: 300px;"%>
       </div>
       <div class="action_side gap10">
         <%= image_tag "comment.svg"%>
@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="next_post ">
-    <%= button_to root_path(), method: :get, class: 'button_null'  do %>
+    <%= button_to next_post_path(), method: :get, class: 'button_null'  do %>
       <div class="arrow_right">
         <%= image_tag "arrow_right.svg", style:"height: 60px;"%>
       </div>

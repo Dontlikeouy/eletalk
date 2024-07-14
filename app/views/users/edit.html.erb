@@ -1,0 +1,9 @@
+<div class="login_form gap10_column">
+  <%= render "shared/head_popup",close_path: root_path() %>
+  <%= render 'shared/errors', object: @user %>
+  <%= form_with(scope: @user, url:username_update_path(), class: "gap10_column") do |form| %>
+    <%= form.label :username, style: "display: block" , placeholder: "Введите имя"%>
+    <%= form.text_field :username,class: "input" %>
+    <%= form.submit "Set username", class: "button" %>
+  <% end %>
+</div>
