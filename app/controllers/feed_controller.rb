@@ -11,10 +11,10 @@ class FeedController < ApplicationController
 
   def next_post
     if Post.count == params[:post_id].to_i + 1
-      redirect_to feed_path(post_id: params[:post_id].to_i + 1)
-    else
       @post = Post.first
       redirect_to feed_path(post_id: @post.id)
+    else
+      redirect_to feed_path(post_id: params[:post_id].to_i + 1)
     end
   end
 
