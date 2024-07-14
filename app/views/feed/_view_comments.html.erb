@@ -1,0 +1,22 @@
+<div class="comments gap10_column">
+    <% @comments.each do |comment| %>
+    <div class="comment">
+      <% if comment.user_id.to_s== session[:user_id].to_s%>
+        <input type="checkbox" id="hd-1" class="hide">
+        <div class="view gap10">
+          <%= form_with(scope:comment, url:comment_update_path(comment_id: comment.id),class:"gap10",method: :post) do |form| %>
+            <div class="close">
+              <%= form.text_field :text, class: "input", placeholder: "Редактировать"%>
+              <label  for="hd-1" class="button_small">x</label>
+            </div>
+            <%= form.submit '+',  class: "button" %>
+          <% end %>
+        </div>
+      <% end %>
+      <label  for="hd-1" class="user button_null gap10" >
+        <%= image_tag "unknown_user.svg"%>
+        <p> <%= comment.text  %></p>
+      </label>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<% if object.errors.any?%>
+  <div class="errors gap10_column">
+    <% object.errors.each do |error| %>
+      <p><%= error.full_message %></p>
+    <% end %>
+  </div>
+<%end%>

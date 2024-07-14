@@ -1,16 +1,9 @@
-<%= turbo_frame_tag "modal" do%>
-  <div class="login_form">
-    <div class="head">
-      <img src="assets/logo.svg">
-      <img src="assets/close.svg">
-    </div>
-    <%= form_with(model: @user) do |form| %>
-      <div>
-        <%= form.label :email, style: "display: block" , placeholder: "Введите адрес эл. почты"%>
-        <%= form.email_field :email %>
-      </div>
-        <%= form.submit %>
-      </div>
-    <% end %>
-  </div>
-<%end%>
+<div class="login_form gap10_column">
+  <%= render "shared/head_popup",close_path: root_path() %>
+  <%= render 'shared/errors', object: @user %>
+  <%= form_with(scope: @user, url:login_create_path(), class: "gap10_column") do |form| %>
+    <%= form.label :email, style: "display: block" , placeholder: "Введите адрес эл. почты"%>
+    <%= form.email_field :email,class: "input" %>
+    <%= form.submit "Login", class: "button" %>
+  <% end %>
+</div>

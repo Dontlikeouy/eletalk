@@ -1,31 +1,29 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
+  before_action :user_unauthentication, only: %i[index login]
+  before_action :user_authentication, only: %i[logout]
 
-  def new
+  def index
     @user = User.new
   end
 
-  def create
-    @user = User.new(user_params)
+  def login
+    @user_params = params.require(:user).permit(:email)
+    @user = User.find_by(email: @user_params[:email])
 
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_path
-    else
-      render :new
+    if @user.nil?
+      @user = User.new(@user_params)
+      unless @user.save
+        render :index, status: :unprocessable_entity
+        return
+      end
     end
+
+    redirect_to profile_path
+    session[:user_id] = @user.id
   end
 
-  private
-
-  def user_params
-    puts 'my'
-    puts params.inspect
-    puts 'my'
-
-    puts params
-    params.require(:users).permit(:email)
+  def logout
+    session.delete(:user_id)
+    redirect_to root_path
   end
 end

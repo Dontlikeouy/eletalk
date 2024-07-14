@@ -1,0 +1,7 @@
+<%unless owner_id.to_s == session[:user_id].to_s %>
+  <% if @is_subscribe %>
+    <%= button_to 'Отписаться', unsubscribe_path(owner_id),class: 'button', method: :post %>
+  <%else %>
+    <%= button_to 'Подписаться', subscribe_path(owner_id),class: 'button', style: "background: #5F6368; color: white;", method: :post %>
+  <%end%>
+<%end%>

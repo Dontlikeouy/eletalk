@@ -1,0 +1,12 @@
+<%= render 'shared/errors', object: model %>
+<%= form_with(scope: model,url: url) do |form| %>
+  <div class="column gap10">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "input"%>
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "input"%>
+    <%= form.label :image  ,"Choose image to upload (PNG, JPG)", class: "button"%>
+    <%= form.file_field :image, accept:".jpg, .jpeg, .png", style: "opacity: 0;height: 0px;display: none;"%>
+    <%= form.submit "Create post", class: "button" %>
+  </div>
+<% end %>

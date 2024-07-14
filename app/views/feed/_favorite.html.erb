@@ -1,0 +1,9 @@
+  <% if @is_favorite %>
+  <%= button_to unfavorite_path(@post), method: :post, class: 'button_null'  do %>
+    <%= image_tag "favorite_fill.svg"%>
+  <%end%>
+<% else %>
+  <%= button_to favorite_path(@post), method: :post, class: 'button_null'  do %>
+    <%= image_tag "favorite.svg"%>
+  <%end%>
+<% end %>

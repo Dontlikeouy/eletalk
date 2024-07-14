@@ -1,0 +1,11 @@
+<div class="head space_between">
+  <%= image_tag "logo.svg"%>
+  <div class="action gap10" >
+    <%= button_to root_path(), method: :get , class: "button_null" do %>
+      <%= image_tag "home.svg"%>
+    <%end%>
+    <%= button_to logout_path(), method: :delete , class: "button_null" do %>
+      <%= image_tag "logout.svg"%>
+    <%end%>
+  </div>
+</div>

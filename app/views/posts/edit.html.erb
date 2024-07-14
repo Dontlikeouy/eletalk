@@ -1,0 +1,7 @@
+<div class="post_edit gap10_column">
+  <%= render "shared/head_popup",close_path: profile_path() %>
+  <div class="body gap10_column">
+    <%= render 'post_form',model:@post,url: post_update_path(post_id:@post.id)%>
+    <%= button_to "Delete post", post_destroy_path(post_id:@post.id), method: :delete , class: "button"  %>
+  </div>
+</div>

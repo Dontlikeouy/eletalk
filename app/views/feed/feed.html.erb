@@ -1,0 +1,39 @@
+<div class="post gap10">
+  <div class="photo gap10_column">
+    <div class="head column space_between">
+      <%= image_tag "logo.svg"%>
+      <%= render "login"%>
+    </div>
+    <div class="body gap10 space_between">
+      <div class="image">
+        <%= image_tag @post.image, style:"max-height: 600px;min-height: 400px;"%>
+      </div>
+      <div class="action_side gap10">
+        <%= image_tag "comment.svg"%>
+        <p><%= @comment_count%></p>
+        <%= render "favorite"%>
+        <p><%= @favorite_count%></p>
+      </div>
+    </div>
+    <div class="footer space_between gap10">
+      <%= render "another_profile" %>
+      <%= render "shared/subscribe", owner_id: @post.user_id%>
+    </div>
+  </div>
+  <div class="description gap10_column">
+    <div class="head gap10_column">
+      <p class="title"><%=@post.title%></p>
+      <p> <%=@post.description  %></p>
+    </div>
+    <div class="body column space_between">
+      <p>Комментарии</p>
+      <%= render "view_comments" %>
+    </div>
+    <div class="footer gap10_column">
+      <%= form_with(url:comment_create_path()) do |form| %>
+        <%= form.text_field :text, class: "input",placeholder: "Добавить комментарий"%>
+        <%= form.submit '+',  class: "button" %>
+      <% end %>
+    </div>
+  </div>
+</div>
